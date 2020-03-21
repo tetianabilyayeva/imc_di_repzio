@@ -7,7 +7,7 @@
      </div>
       <div class="dialog-body">
 
-        <img class="block-image" v-bind:alt="content.ItemName" v-bind:src="content.PhotoName"/>
+        <img class="block-image" v-bind:alt="content.ItemName" v-bind:src="content.PhotoName | resizeImage"/>
         <h2>{{ content.ItemName }} (ID:{{content.ItemID}})</h2>
         
         
@@ -19,6 +19,16 @@
     </div>
   </div>
 </template>
+
+<script>
+export default {
+  filters: {
+    resizeImage: function (value) {
+    return value + "?format=png&crop=10,10,-10,-10&mode=crop";
+    }
+  }
+};
+</script>
 
 
 <style scoped lang="scss">
